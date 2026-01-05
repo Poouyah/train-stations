@@ -18,32 +18,27 @@ export default function SelectMUI({ open, setOpen, selectedCity, setSelectedCity
     };
 
     return (
-        <>
-            <style>
-                {`.css-51zut-MuiNativeSelect-root-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {padding-top: 10px; padding-bottom: 10px;}`}
-            </style>
-            <ThemeProvider theme={theme} defaultMode="dark">
-                <FormControl sx={{ width: '100%', maxHeight: 40 }} >
-                    <InputLabel id="demo-controlled-open-select-label">Filter By City</InputLabel>
-                    <Select
-                        labelId="demo-controlled-open-select-label"
-                        id="demo-controlled-open-select"
-                        open={open}
-                        onClose={handleClose}
-                        onOpen={handleOpen}
-                        value={selectedCity}
-                        label="Filter By City"
-                        onChange={e => setSelectedCity(e.target.value)}
-                    >
-                        {uniqueCities.map((city) => (
-                            <MenuItem key={city} value={city}>
-                                {city}
-                            </MenuItem>
-                        ))}
-                    </Select>
-                </FormControl>
-            </ThemeProvider>
-        </>
-
+        <ThemeProvider theme={theme} defaultMode="dark">
+            <FormControl sx={{ width: '100%', maxHeight: 40 }} >
+                <InputLabel id="demo-controlled-open-select-label">Filter By City</InputLabel>
+                <Select
+                    labelId="demo-controlled-open-select-label"
+                    id="demo-controlled-open-select"
+                    open={open}
+                    onClose={handleClose}
+                    onOpen={handleOpen}
+                    value={selectedCity}
+                    label="Filter By City"
+                    onChange={e => setSelectedCity(e.target.value)}
+                    sx={{ '& .MuiSelect-select': { paddingTop: '10px', paddingBottom: '10px' } }}
+                >
+                    {uniqueCities.map((city) => (
+                        <MenuItem key={city} value={city}>
+                            {city}
+                        </MenuItem>
+                    ))}
+                </Select>
+            </FormControl>
+        </ThemeProvider>
     )
 }
